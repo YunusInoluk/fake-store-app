@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-
+import ReactPaginate from "react-paginate";
 import Product from "./Product";
 
 function ProductList() {
   let [products, setProducts] = useState([]);
   let [filter, setFilter] = useState(products);
   let [isLoading, setIsLoading] = useState(false);
-
+  const [pageNumber, setPageNumber] = useState(0);
   useEffect(async () => {
     const res = await fetch("https://fakestoreapi.com/products/");
     const data = await res.json();
@@ -24,6 +24,16 @@ function ProductList() {
     setFilter(filteredData);
   };
 
+  const productPerPage = 10;
+  const pageVisited = pageNumber * productPerPage;
+  const displayProducts = (item) =>
+    item.slice(pageVisited, pageVisited + productPerPage).map((product) => {
+      return <Product data={product} key={product.id} />;
+    });
+  const pageCount = Math.ceil(products.length / productPerPage);
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
   return (
     <div className="container mt-3">
       {!isLoading ? (
@@ -57,12 +67,25 @@ function ProductList() {
           </div>
           <div className="row d-flex justify-content-center">
             {filter.length
-              ? filter.map((product) => (
-                  <Product data={product} key={product.id} />
-                ))
-              : products.map((product) => (
-                  <Product data={product} key={product.id} />
-                ))}
+              ? displayProducts(filter)
+              : displayProducts(products)}
+          </div>
+          <div className="d-flex justify-content-center mt-3 mb-5">
+            <ReactPaginate
+              previousLabel={"Previous"}
+              nextLabel={"Next"}
+              pageCount={pageCount}
+              onPageChange={changePage}
+              containerClassName={"pagination"}
+              pageClassName={"page-item"}
+              pageLinkClassName={"page-link"}
+              activeClassName={"active"}
+              previousClassName={"page-item"}
+              nextClassName={"page-item"}
+              previousLinkClassName={"page-link"}
+              nextLinkClassName={"page-link"}
+              disabledClassName={"disabled"}
+            />
           </div>
         </div>
       )}
