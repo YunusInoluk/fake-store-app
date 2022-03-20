@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import "./ProductDetail.css";
 
 function ProductDetail() {
   const location = useLocation();
@@ -8,7 +9,7 @@ function ProductDetail() {
 
   return (
     <div>
-      <div className="container d-flex justify-content-between w-100 py-5 ">
+      <div className="product-detail container d-flex justify-content-between w-100 py-5 ">
         <div className="col-md-6">
           <img
             src={product.image}
@@ -32,7 +33,7 @@ function ProductDetail() {
           </div>
           <p>{product.description}</p>
           <div className="d-flex justify-content-between">
-            <h4>${product.price}</h4>
+            <h4 className="product-detail-price">${product.price}</h4>
             <button className="btn btn-primary">ADD TO CART</button>
           </div>
         </div>

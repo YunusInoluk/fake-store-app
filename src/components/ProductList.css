@@ -1,0 +1,12 @@
+@media screen and (max-width: 460px) {
+  .product-list-top {
+    flex-direction: column;
+  }
+  .category-list {
+    align-items: center;
+    flex-direction: column;
+  }
+  .category-list li {
+    margin-bottom: 10px;
+  }
+}

@@ -18,7 +18,7 @@ function Product({ data }) {
       <div className="card-body">
         <div>
           <h6 className="card-title font-weight-bold">{data.title}</h6>
-          <div className="d-flex align-items-center">
+          <div className="product-rate d-flex align-items-center">
             {[...new Array(5)].map((arr, index) => {
               return index < data.rating.rate ? (
                 <AiFillStar key={index} />
@@ -30,7 +30,7 @@ function Product({ data }) {
           </div>
         </div>
         <div className="d-flex justify-content-between align-items-center">
-          <span className="price font-weight-bold">${data.price}</span>
+          <span className="product-price font-weight-bold">${data.price}</span>
           <a href="#" className="btn btn-primary">
             ADD
           </a>

@@ -1,0 +1,9 @@
+@media screen and (max-width: 460px) {
+  .product-detail {
+    flex-direction: column;
+  }
+  .product-detail-price {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}

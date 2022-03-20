@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import Product from "./Product";
+import "./ProductList.css";
 
 function ProductList() {
   let [products, setProducts] = useState([]);
@@ -40,9 +41,9 @@ function ProductList() {
         <div>Loading...</div>
       ) : (
         <div>
-          <div className="d-flex justify-content-between">
+          <div className="product-list-top d-flex justify-content-between">
             <h4 className="font-weight-bold">Products</h4>
-            <ul className="d-flex list-unstyled">
+            <ul className="category-list d-flex list-unstyled">
               <li className="category-item px-2">
                 <button
                   type="button"
