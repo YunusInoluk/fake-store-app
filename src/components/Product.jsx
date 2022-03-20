@@ -14,9 +14,9 @@ function Product({ data }) {
           <div className="d-flex align-items-center">
             {[...new Array(5)].map((arr, index) => {
               return index < data.rating.rate ? (
-                <AiFillStar />
+                <AiFillStar key={index} />
               ) : (
-                <AiOutlineStar />
+                <AiOutlineStar key={index} />
               );
             })}
             - {data.rating.count}
