@@ -1,10 +1,17 @@
 import React from "react";
 import "./product.css";
+import { useNavigate } from "react-router-dom";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 function Product({ data }) {
-  //   console.log(data);
+  const navigate = useNavigate();
   return (
-    <div className="card col-lg-2 col-md-3 m-2">
+    <div
+      className="card col-lg-2 col-md-3 m-2"
+      onClick={() => {
+        console.log(data.title);
+        navigate(`/products/${data.id}`, { state: data });
+      }}
+    >
       <div className="img-block h-50 p-2">
         <img src={data.image} className="card-img-top object-fit" alt="..." />
       </div>
